@@ -5,7 +5,7 @@
 
 release_note=$1
 
-git_repo_id=Smart-Consent-Access/sa-sdk-chsarp
+git_repo_id=Smart-Consent-Access/sa-sdk-csharp
 
 if [ "$release_note" = "" ]; then
     release_note="Minor update"
