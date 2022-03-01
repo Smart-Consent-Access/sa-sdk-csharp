@@ -3,20 +3,16 @@
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>SmartAccess</AssemblyName>
-    <PackageId>SmartAccess</PackageId>
+    <PackageId>SmartAccess.SDK</PackageId>
     <OutputType>Library</OutputType>
-    <Authors>OpenAPI</Authors>
-    <Company>OpenAPI</Company>
-    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
-    <Description>A library generated from a OpenAPI doc</Description>
+    <Description>C# SDK for Smart Access</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>SmartAccess</RootNamespace>
-    <Version>0.0.1</Version>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SmartAccess.xml</DocumentationFile>
-    <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
+    <Version>1.0.4</Version>
+    <RepositoryUrl>https://github.com/Smart-Consent-Access/sa-sdk-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +24,10 @@
     <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
