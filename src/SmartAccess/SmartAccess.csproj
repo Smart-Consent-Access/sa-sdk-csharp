@@ -12,11 +12,12 @@
     <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>SmartAccess</RootNamespace>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SmartAccess.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +29,7 @@
     <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
+    <None Include="..\..docs\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
