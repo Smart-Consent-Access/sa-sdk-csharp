@@ -3,8 +3,8 @@
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TargetFramework>net5.0</TargetFramework>
-    <AssemblyName>SmartAccess</AssemblyName>
-    <PackageId>SmartAccess</PackageId>
+    <AssemblyName>SmartAccess.SDK</AssemblyName>
+    <PackageId>SmartAccess.SDK</PackageId>
     <OutputType>Library</OutputType>
     <Authors>OpenAPI</Authors>
     <Company>OpenAPI</Company>
@@ -12,7 +12,7 @@
     <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>SmartAccess</RootNamespace>
-    <Version>1.0.6</Version>
+    <Version>1.0.5</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SmartAccess.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
