@@ -32,6 +32,32 @@ namespace SmartAccess.Model
     public partial class ConsentRequestSummaryDTO : IEquatable<ConsentRequestSummaryDTO>, IValidatableObject
     {
         /// <summary>
+        /// Defines ResponseTotalStatus
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ResponseTotalStatusEnum
+        {
+            /// <summary>
+            /// Enum PENDING for value: PENDING
+            /// </summary>
+            [EnumMember(Value = "PENDING")]
+            PENDING = 1,
+
+            /// <summary>
+            /// Enum COMPLETED for value: COMPLETED
+            /// </summary>
+            [EnumMember(Value = "COMPLETED")]
+            COMPLETED = 2
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets ResponseTotalStatus
+        /// </summary>
+        [DataMember(Name = "responseTotalStatus", IsRequired = true, EmitDefaultValue = false)]
+        public ResponseTotalStatusEnum ResponseTotalStatus { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="ConsentRequestSummaryDTO" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -51,7 +77,11 @@ namespace SmartAccess.Model
         /// <param name="reqPrincipalName">reqPrincipalName (required).</param>
         /// <param name="consServiceProviderId">consServiceProviderId (required).</param>
         /// <param name="consents">consents.</param>
-        public ConsentRequestSummaryDTO(string id = default(string), List<string> actions = default(List<string>), List<string> resources = default(List<string>), List<string> conditions = default(List<string>), string termsAndConditions = default(string), List<LocalizedStringDTO> purpose = default(List<LocalizedStringDTO>), string reqServiceProviderId = default(string), string reqServiceProviderName = default(string), string reqPrincipalId = default(string), string reqPrincipalName = default(string), string consServiceProviderId = default(string), List<ConsentSummaryDTO> consents = default(List<ConsentSummaryDTO>))
+        /// <param name="numApproved">numApproved (required).</param>
+        /// <param name="numRejected">numRejected (required).</param>
+        /// <param name="responseTotalStatus">responseTotalStatus (required).</param>
+        /// <param name="numAffectedUsers">numAffectedUsers (required).</param>
+        public ConsentRequestSummaryDTO(string id = default(string), List<string> actions = default(List<string>), List<string> resources = default(List<string>), List<string> conditions = default(List<string>), string termsAndConditions = default(string), List<LocalizedStringDTO> purpose = default(List<LocalizedStringDTO>), string reqServiceProviderId = default(string), string reqServiceProviderName = default(string), string reqPrincipalId = default(string), string reqPrincipalName = default(string), string consServiceProviderId = default(string), List<ConsentSummaryDTO> consents = default(List<ConsentSummaryDTO>), double numApproved = default(double), double numRejected = default(double), ResponseTotalStatusEnum responseTotalStatus = default(ResponseTotalStatusEnum), double numAffectedUsers = default(double))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -108,6 +138,10 @@ namespace SmartAccess.Model
                 throw new ArgumentNullException("consServiceProviderId is a required property for ConsentRequestSummaryDTO and cannot be null");
             }
             this.ConsServiceProviderId = consServiceProviderId;
+            this.NumApproved = numApproved;
+            this.NumRejected = numRejected;
+            this.ResponseTotalStatus = responseTotalStatus;
+            this.NumAffectedUsers = numAffectedUsers;
             this.Consents = consents;
         }
 
@@ -184,6 +218,24 @@ namespace SmartAccess.Model
         public List<ConsentSummaryDTO> Consents { get; set; }
 
         /// <summary>
+        /// Gets or Sets NumApproved
+        /// </summary>
+        [DataMember(Name = "numApproved", IsRequired = true, EmitDefaultValue = false)]
+        public double NumApproved { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NumRejected
+        /// </summary>
+        [DataMember(Name = "numRejected", IsRequired = true, EmitDefaultValue = false)]
+        public double NumRejected { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NumAffectedUsers
+        /// </summary>
+        [DataMember(Name = "numAffectedUsers", IsRequired = true, EmitDefaultValue = false)]
+        public double NumAffectedUsers { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -203,6 +255,10 @@ namespace SmartAccess.Model
             sb.Append("  ReqPrincipalName: ").Append(ReqPrincipalName).Append("\n");
             sb.Append("  ConsServiceProviderId: ").Append(ConsServiceProviderId).Append("\n");
             sb.Append("  Consents: ").Append(Consents).Append("\n");
+            sb.Append("  NumApproved: ").Append(NumApproved).Append("\n");
+            sb.Append("  NumRejected: ").Append(NumRejected).Append("\n");
+            sb.Append("  ResponseTotalStatus: ").Append(ResponseTotalStatus).Append("\n");
+            sb.Append("  NumAffectedUsers: ").Append(NumAffectedUsers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -301,6 +357,22 @@ namespace SmartAccess.Model
                     this.Consents != null &&
                     input.Consents != null &&
                     this.Consents.SequenceEqual(input.Consents)
+                ) && 
+                (
+                    this.NumApproved == input.NumApproved ||
+                    this.NumApproved.Equals(input.NumApproved)
+                ) && 
+                (
+                    this.NumRejected == input.NumRejected ||
+                    this.NumRejected.Equals(input.NumRejected)
+                ) && 
+                (
+                    this.ResponseTotalStatus == input.ResponseTotalStatus ||
+                    this.ResponseTotalStatus.Equals(input.ResponseTotalStatus)
+                ) && 
+                (
+                    this.NumAffectedUsers == input.NumAffectedUsers ||
+                    this.NumAffectedUsers.Equals(input.NumAffectedUsers)
                 );
         }
 
@@ -337,6 +409,10 @@ namespace SmartAccess.Model
                     hashCode = hashCode * 59 + this.ConsServiceProviderId.GetHashCode();
                 if (this.Consents != null)
                     hashCode = hashCode * 59 + this.Consents.GetHashCode();
+                hashCode = hashCode * 59 + this.NumApproved.GetHashCode();
+                hashCode = hashCode * 59 + this.NumRejected.GetHashCode();
+                hashCode = hashCode * 59 + this.ResponseTotalStatus.GetHashCode();
+                hashCode = hashCode * 59 + this.NumAffectedUsers.GetHashCode();
                 return hashCode;
             }
         }

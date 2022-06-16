@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
+**Type** | **ConsentType** |  | 
 **ConsPrincipalId** | **string** |  | 
 **ConsPrincipalName** | **string** |  | 
 **Policy** | [**List&lt;PolicySummaryDTO&gt;**](PolicySummaryDTO.md) |  | [optional] 

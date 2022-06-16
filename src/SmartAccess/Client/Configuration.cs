@@ -31,7 +31,7 @@ namespace SmartAccess.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "0.0.1";
+        public const string Version = "1.0.4";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -106,7 +106,7 @@ namespace SmartAccess.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = "OpenAPI-Generator/0.0.1/csharp";
+            UserAgent = "OpenAPI-Generator/1.0.4/csharp";
             BasePath = "http://localhost/api/v1";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -451,7 +451,7 @@ namespace SmartAccess.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 1.0.0\n";
-            report += "    SDK Package Version: 0.0.1\n";
+            report += "    SDK Package Version: 1.0.4\n";
 
             return report;
         }

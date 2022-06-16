@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**FlowConsentRequestInitialize**](ConsentRequestsApi.md#flowconsentrequestinitialize) | **POST** /consent_requests/flow_consent_req_initialize | 
 [**GetConsentRequest**](ConsentRequestsApi.md#getconsentrequest) | **GET** /consent_requests/{consentRequestId} | 
 [**GetConsentRequests**](ConsentRequestsApi.md#getconsentrequests) | **GET** /consent_requests | 
+[**SearchConsentRequests**](ConsentRequestsApi.md#searchconsentrequests) | **POST** /consent_requests/search | 
 
 
 <a name="deleteid"></a>
@@ -83,6 +84,8 @@ void (empty response body)
 |-------------|-------------|------------------|
 | **204** | No content |  -  |
 | **401** | Authentication failed |  -  |
+| **403** | Authorization failed |  -  |
+| **404** | Resource not found |  -  |
 | **422** | Validation failed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -157,7 +160,7 @@ No authorization required
 | **401** | Authentication failed |  -  |
 | **403** | Authorization failed |  -  |
 | **404** | Resource not found |  -  |
-| **422** | Validation failed |  -  |
+| **422** | Actions, resources or conditions are not valid |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -231,7 +234,7 @@ No authorization required
 | **401** | Authentication failed |  -  |
 | **403** | Authorization failed |  -  |
 | **404** | Resource not found |  -  |
-| **422** | Validation failed |  -  |
+| **422** | Actions, resources or conditions are not valid |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -387,6 +390,84 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **401** | Authentication failed |  -  |
+| **422** | Validation failed |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="searchconsentrequests"></a>
+# **SearchConsentRequests**
+> PaginationResultDTOConsentRequestSearchResultDTO SearchConsentRequests (SearchConsentRequestsDTO searchConsentRequestsDTO)
+
+
+
+Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using SmartAccess.Api;
+using SmartAccess.Client;
+using SmartAccess.Model;
+
+namespace Example
+{
+    public class SearchConsentRequestsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost/api/v1";
+            // Configure API key authorization: jwt
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+
+            var apiInstance = new ConsentRequestsApi(config);
+            var searchConsentRequestsDTO = new SearchConsentRequestsDTO(); // SearchConsentRequestsDTO | The search parameters
+
+            try
+            {
+                PaginationResultDTOConsentRequestSearchResultDTO result = apiInstance.SearchConsentRequests(searchConsentRequestsDTO);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ConsentRequestsApi.SearchConsentRequests: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchConsentRequestsDTO** | [**SearchConsentRequestsDTO**](SearchConsentRequestsDTO.md)| The search parameters | 
+
+### Return type
+
+[**PaginationResultDTOConsentRequestSearchResultDTO**](PaginationResultDTOConsentRequestSearchResultDTO.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+| **401** | Authentication failed |  -  |
+| **403** | Authorization failed |  -  |
 | **422** | Validation failed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

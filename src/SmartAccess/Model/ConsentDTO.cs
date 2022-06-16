@@ -31,6 +31,12 @@ namespace SmartAccess.Model
     [DataContract(Name = "ConsentDTO")]
     public partial class ConsentDTO : IEquatable<ConsentDTO>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
+        public ConsentType Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ConsentDTO" /> class.
         /// </summary>
@@ -40,15 +46,17 @@ namespace SmartAccess.Model
         /// Initializes a new instance of the <see cref="ConsentDTO" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="type">type (required).</param>
         /// <param name="legalEntity">legalEntity.</param>
         /// <param name="policy">policy.</param>
-        public ConsentDTO(string id = default(string), LegalEntityDTO legalEntity = default(LegalEntityDTO), List<PolicyDTO> policy = default(List<PolicyDTO>))
+        public ConsentDTO(string id = default(string), ConsentType type = default(ConsentType), LegalEntityDTO legalEntity = default(LegalEntityDTO), List<PolicyDTO> policy = default(List<PolicyDTO>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ConsentDTO and cannot be null");
             }
             this.Id = id;
+            this.Type = type;
             this.LegalEntity = legalEntity;
             this.Policy = policy;
         }
@@ -80,6 +88,7 @@ namespace SmartAccess.Model
             var sb = new StringBuilder();
             sb.Append("class ConsentDTO {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  LegalEntity: ").Append(LegalEntity).Append("\n");
             sb.Append("  Policy: ").Append(Policy).Append("\n");
             sb.Append("}\n");
@@ -122,6 +131,10 @@ namespace SmartAccess.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Type == input.Type ||
+                    this.Type.Equals(input.Type)
+                ) && 
+                (
                     this.LegalEntity == input.LegalEntity ||
                     (this.LegalEntity != null &&
                     this.LegalEntity.Equals(input.LegalEntity))
@@ -145,6 +158,7 @@ namespace SmartAccess.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.LegalEntity != null)
                     hashCode = hashCode * 59 + this.LegalEntity.GetHashCode();
                 if (this.Policy != null)

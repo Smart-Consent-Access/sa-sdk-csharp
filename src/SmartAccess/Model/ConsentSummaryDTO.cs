@@ -31,6 +31,12 @@ namespace SmartAccess.Model
     [DataContract(Name = "ConsentSummaryDTO")]
     public partial class ConsentSummaryDTO : IEquatable<ConsentSummaryDTO>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
+        public ConsentType Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ConsentSummaryDTO" /> class.
         /// </summary>
@@ -40,16 +46,18 @@ namespace SmartAccess.Model
         /// Initializes a new instance of the <see cref="ConsentSummaryDTO" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="type">type (required).</param>
         /// <param name="consPrincipalId">consPrincipalId (required).</param>
         /// <param name="consPrincipalName">consPrincipalName (required).</param>
         /// <param name="policy">policy.</param>
-        public ConsentSummaryDTO(string id = default(string), string consPrincipalId = default(string), string consPrincipalName = default(string), List<PolicySummaryDTO> policy = default(List<PolicySummaryDTO>))
+        public ConsentSummaryDTO(string id = default(string), ConsentType type = default(ConsentType), string consPrincipalId = default(string), string consPrincipalName = default(string), List<PolicySummaryDTO> policy = default(List<PolicySummaryDTO>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ConsentSummaryDTO and cannot be null");
             }
             this.Id = id;
+            this.Type = type;
             // to ensure "consPrincipalId" is required (not null)
             if (consPrincipalId == null) {
                 throw new ArgumentNullException("consPrincipalId is a required property for ConsentSummaryDTO and cannot be null");
@@ -96,6 +104,7 @@ namespace SmartAccess.Model
             var sb = new StringBuilder();
             sb.Append("class ConsentSummaryDTO {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  ConsPrincipalId: ").Append(ConsPrincipalId).Append("\n");
             sb.Append("  ConsPrincipalName: ").Append(ConsPrincipalName).Append("\n");
             sb.Append("  Policy: ").Append(Policy).Append("\n");
@@ -139,6 +148,10 @@ namespace SmartAccess.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Type == input.Type ||
+                    this.Type.Equals(input.Type)
+                ) && 
+                (
                     this.ConsPrincipalId == input.ConsPrincipalId ||
                     (this.ConsPrincipalId != null &&
                     this.ConsPrincipalId.Equals(input.ConsPrincipalId))
@@ -167,6 +180,7 @@ namespace SmartAccess.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.ConsPrincipalId != null)
                     hashCode = hashCode * 59 + this.ConsPrincipalId.GetHashCode();
                 if (this.ConsPrincipalName != null)

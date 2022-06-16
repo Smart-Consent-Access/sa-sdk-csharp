@@ -3,16 +3,20 @@
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageId>SmartAccess.SDK</PackageId>
+    <AssemblyName>SmartAccess</AssemblyName>
+    <PackageId>SmartAccess</PackageId>
     <OutputType>Library</OutputType>
-    <Description>C# SDK for Smart Access</Description>
+    <Authors>OpenAPI</Authors>
+    <Company>OpenAPI</Company>
+    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
+    <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>SmartAccess</RootNamespace>
-    <Version>1.0.4</Version>
-    <RepositoryUrl>https://github.com/Smart-Consent-Access/sa-sdk-csharp</RepositoryUrl>
+    <Version>1.0.5</Version>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SmartAccess.xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,14 +24,10 @@
     <PackageReference Include="JsonSubTypes" Version="1.8.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="RestSharp" Version="106.15.0" />
     <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-	  <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>

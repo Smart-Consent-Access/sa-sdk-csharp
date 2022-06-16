@@ -72,7 +72,7 @@ namespace SmartAccess.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Initialize a consent approval as the consenting service provider. The information about the request to approve is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider
+        /// Initialize a consent approval or rejection as the consenting service provider. The information about the request to approve or reject is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider. A consent request can be approved or rejected by more than one consenting principal (legal entity) by initiating more consents
         /// </remarks>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="consentApprovalInitializeBody">The signed jwt with payload of type SAConsApprovalInitializeSp2ToSaJWT</param>
@@ -83,7 +83,7 @@ namespace SmartAccess.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Initialize a consent approval as the consenting service provider. The information about the request to approve is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider
+        /// Initialize a consent approval or rejection as the consenting service provider. The information about the request to approve or reject is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider. A consent request can be approved or rejected by more than one consenting principal (legal entity) by initiating more consents
         /// </remarks>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="consentApprovalInitializeBody">The signed jwt with payload of type SAConsApprovalInitializeSp2ToSaJWT</param>
@@ -110,6 +110,48 @@ namespace SmartAccess.Api
         /// <param name="consentId">The consent id in UUID format</param>
         /// <returns>ApiResponse of ConsentDTO</returns>
         ApiResponse<ConsentDTO> GetConsentWithHttpInfo(string consentId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Search for consents (approvals) given some search parameters. See SearchConsentsDTO for details on parameters. Will return a list of matching consents
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentsDTO">The search parameters</param>
+        /// <returns>PaginationResultDTOConsentSearchResultDTO</returns>
+        PaginationResultDTOConsentSearchResultDTO SearchConsents(SearchConsentsDTO searchConsentsDTO);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Search for consents (approvals) given some search parameters. See SearchConsentsDTO for details on parameters. Will return a list of matching consents
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentsDTO">The search parameters</param>
+        /// <returns>ApiResponse of PaginationResultDTOConsentSearchResultDTO</returns>
+        ApiResponse<PaginationResultDTOConsentSearchResultDTO> SearchConsentsWithHttpInfo(SearchConsentsDTO searchConsentsDTO);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Create a single provider consent. This is a complete consent approval for some action, resources and conditions, with your own serviceprovider as both requester and consenter
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="singleProviderConsentDTO">Info about the consent to create</param>
+        /// <returns>string</returns>
+        string SingleProviderConsent(SingleProviderConsentDTO singleProviderConsentDTO);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Create a single provider consent. This is a complete consent approval for some action, resources and conditions, with your own serviceprovider as both requester and consenter
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="singleProviderConsentDTO">Info about the consent to create</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> SingleProviderConsentWithHttpInfo(SingleProviderConsentDTO singleProviderConsentDTO);
         #endregion Synchronous Operations
     }
 
@@ -169,7 +211,7 @@ namespace SmartAccess.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Initialize a consent approval as the consenting service provider. The information about the request to approve is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider
+        /// Initialize a consent approval or rejection as the consenting service provider. The information about the request to approve or reject is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider. A consent request can be approved or rejected by more than one consenting principal (legal entity) by initiating more consents
         /// </remarks>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="consentApprovalInitializeBody">The signed jwt with payload of type SAConsApprovalInitializeSp2ToSaJWT</param>
@@ -181,7 +223,7 @@ namespace SmartAccess.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Initialize a consent approval as the consenting service provider. The information about the request to approve is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider
+        /// Initialize a consent approval or rejection as the consenting service provider. The information about the request to approve or reject is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider. A consent request can be approved or rejected by more than one consenting principal (legal entity) by initiating more consents
         /// </remarks>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="consentApprovalInitializeBody">The signed jwt with payload of type SAConsApprovalInitializeSp2ToSaJWT</param>
@@ -211,6 +253,52 @@ namespace SmartAccess.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ConsentDTO)</returns>
         System.Threading.Tasks.Task<ApiResponse<ConsentDTO>> GetConsentWithHttpInfoAsync(string consentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Search for consents (approvals) given some search parameters. See SearchConsentsDTO for details on parameters. Will return a list of matching consents
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentsDTO">The search parameters</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of PaginationResultDTOConsentSearchResultDTO</returns>
+        System.Threading.Tasks.Task<PaginationResultDTOConsentSearchResultDTO> SearchConsentsAsync(SearchConsentsDTO searchConsentsDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Search for consents (approvals) given some search parameters. See SearchConsentsDTO for details on parameters. Will return a list of matching consents
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentsDTO">The search parameters</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (PaginationResultDTOConsentSearchResultDTO)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaginationResultDTOConsentSearchResultDTO>> SearchConsentsWithHttpInfoAsync(SearchConsentsDTO searchConsentsDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Create a single provider consent. This is a complete consent approval for some action, resources and conditions, with your own serviceprovider as both requester and consenter
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="singleProviderConsentDTO">Info about the consent to create</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> SingleProviderConsentAsync(SingleProviderConsentDTO singleProviderConsentDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Create a single provider consent. This is a complete consent approval for some action, resources and conditions, with your own serviceprovider as both requester and consenter
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="singleProviderConsentDTO">Info about the consent to create</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> SingleProviderConsentWithHttpInfoAsync(SingleProviderConsentDTO singleProviderConsentDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -574,7 +662,7 @@ namespace SmartAccess.Api
         }
 
         /// <summary>
-        ///  Initialize a consent approval as the consenting service provider. The information about the request to approve is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider
+        ///  Initialize a consent approval or rejection as the consenting service provider. The information about the request to approve or reject is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider. A consent request can be approved or rejected by more than one consenting principal (legal entity) by initiating more consents
         /// </summary>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="consentApprovalInitializeBody">The signed jwt with payload of type SAConsApprovalInitializeSp2ToSaJWT</param>
@@ -586,7 +674,7 @@ namespace SmartAccess.Api
         }
 
         /// <summary>
-        ///  Initialize a consent approval as the consenting service provider. The information about the request to approve is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider
+        ///  Initialize a consent approval or rejection as the consenting service provider. The information about the request to approve or reject is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider. A consent request can be approved or rejected by more than one consenting principal (legal entity) by initiating more consents
         /// </summary>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="consentApprovalInitializeBody">The signed jwt with payload of type SAConsApprovalInitializeSp2ToSaJWT</param>
@@ -630,7 +718,7 @@ namespace SmartAccess.Api
         }
 
         /// <summary>
-        ///  Initialize a consent approval as the consenting service provider. The information about the request to approve is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider
+        ///  Initialize a consent approval or rejection as the consenting service provider. The information about the request to approve or reject is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider. A consent request can be approved or rejected by more than one consenting principal (legal entity) by initiating more consents
         /// </summary>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="consentApprovalInitializeBody">The signed jwt with payload of type SAConsApprovalInitializeSp2ToSaJWT</param>
@@ -643,7 +731,7 @@ namespace SmartAccess.Api
         }
 
         /// <summary>
-        ///  Initialize a consent approval as the consenting service provider. The information about the request to approve is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider
+        ///  Initialize a consent approval or rejection as the consenting service provider. The information about the request to approve or reject is specified in the request body with a signed JWT which will be verified to be signed by the calling/consenting service provider. A consent request can be approved or rejected by more than one consenting principal (legal entity) by initiating more consents
         /// </summary>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="consentApprovalInitializeBody">The signed jwt with payload of type SAConsApprovalInitializeSp2ToSaJWT</param>
@@ -809,6 +897,260 @@ namespace SmartAccess.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetConsent", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Search for consents (approvals) given some search parameters. See SearchConsentsDTO for details on parameters. Will return a list of matching consents
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentsDTO">The search parameters</param>
+        /// <returns>PaginationResultDTOConsentSearchResultDTO</returns>
+        public PaginationResultDTOConsentSearchResultDTO SearchConsents(SearchConsentsDTO searchConsentsDTO)
+        {
+            SmartAccess.Client.ApiResponse<PaginationResultDTOConsentSearchResultDTO> localVarResponse = SearchConsentsWithHttpInfo(searchConsentsDTO);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Search for consents (approvals) given some search parameters. See SearchConsentsDTO for details on parameters. Will return a list of matching consents
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentsDTO">The search parameters</param>
+        /// <returns>ApiResponse of PaginationResultDTOConsentSearchResultDTO</returns>
+        public SmartAccess.Client.ApiResponse<PaginationResultDTOConsentSearchResultDTO> SearchConsentsWithHttpInfo(SearchConsentsDTO searchConsentsDTO)
+        {
+            // verify the required parameter 'searchConsentsDTO' is set
+            if (searchConsentsDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'searchConsentsDTO' when calling ConsentsApi->SearchConsents");
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = searchConsentsDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<PaginationResultDTOConsentSearchResultDTO>("/consents/search", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SearchConsents", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Search for consents (approvals) given some search parameters. See SearchConsentsDTO for details on parameters. Will return a list of matching consents
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentsDTO">The search parameters</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of PaginationResultDTOConsentSearchResultDTO</returns>
+        public async System.Threading.Tasks.Task<PaginationResultDTOConsentSearchResultDTO> SearchConsentsAsync(SearchConsentsDTO searchConsentsDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            SmartAccess.Client.ApiResponse<PaginationResultDTOConsentSearchResultDTO> localVarResponse = await SearchConsentsWithHttpInfoAsync(searchConsentsDTO, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Search for consents (approvals) given some search parameters. See SearchConsentsDTO for details on parameters. Will return a list of matching consents
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentsDTO">The search parameters</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (PaginationResultDTOConsentSearchResultDTO)</returns>
+        public async System.Threading.Tasks.Task<SmartAccess.Client.ApiResponse<PaginationResultDTOConsentSearchResultDTO>> SearchConsentsWithHttpInfoAsync(SearchConsentsDTO searchConsentsDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'searchConsentsDTO' is set
+            if (searchConsentsDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'searchConsentsDTO' when calling ConsentsApi->SearchConsents");
+
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = searchConsentsDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<PaginationResultDTOConsentSearchResultDTO>("/consents/search", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SearchConsents", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Create a single provider consent. This is a complete consent approval for some action, resources and conditions, with your own serviceprovider as both requester and consenter
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="singleProviderConsentDTO">Info about the consent to create</param>
+        /// <returns>string</returns>
+        public string SingleProviderConsent(SingleProviderConsentDTO singleProviderConsentDTO)
+        {
+            SmartAccess.Client.ApiResponse<string> localVarResponse = SingleProviderConsentWithHttpInfo(singleProviderConsentDTO);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Create a single provider consent. This is a complete consent approval for some action, resources and conditions, with your own serviceprovider as both requester and consenter
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="singleProviderConsentDTO">Info about the consent to create</param>
+        /// <returns>ApiResponse of string</returns>
+        public SmartAccess.Client.ApiResponse<string> SingleProviderConsentWithHttpInfo(SingleProviderConsentDTO singleProviderConsentDTO)
+        {
+            // verify the required parameter 'singleProviderConsentDTO' is set
+            if (singleProviderConsentDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'singleProviderConsentDTO' when calling ConsentsApi->SingleProviderConsent");
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = singleProviderConsentDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<string>("/consents/single_provider_consent", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SingleProviderConsent", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Create a single provider consent. This is a complete consent approval for some action, resources and conditions, with your own serviceprovider as both requester and consenter
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="singleProviderConsentDTO">Info about the consent to create</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> SingleProviderConsentAsync(SingleProviderConsentDTO singleProviderConsentDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            SmartAccess.Client.ApiResponse<string> localVarResponse = await SingleProviderConsentWithHttpInfoAsync(singleProviderConsentDTO, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Create a single provider consent. This is a complete consent approval for some action, resources and conditions, with your own serviceprovider as both requester and consenter
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="singleProviderConsentDTO">Info about the consent to create</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<SmartAccess.Client.ApiResponse<string>> SingleProviderConsentWithHttpInfoAsync(SingleProviderConsentDTO singleProviderConsentDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'singleProviderConsentDTO' is set
+            if (singleProviderConsentDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'singleProviderConsentDTO' when calling ConsentsApi->SingleProviderConsent");
+
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = singleProviderConsentDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<string>("/consents/single_provider_consent", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SingleProviderConsent", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

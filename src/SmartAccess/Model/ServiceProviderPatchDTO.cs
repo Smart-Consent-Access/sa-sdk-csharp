@@ -42,7 +42,8 @@ namespace SmartAccess.Model
         /// <param name="finalizeConsentRequestUrl">finalizeConsentRequestUrl.</param>
         /// <param name="initiateConsentUrl">initiateConsentUrl.</param>
         /// <param name="finalizeConsentUrl">finalizeConsentUrl.</param>
-        public ServiceProviderPatchDTO(string id = default(string), string name = default(string), string iconUrl = default(string), string publicKey = default(string), string initiateConsentRequestUrl = default(string), string finalizeConsentRequestUrl = default(string), string initiateConsentUrl = default(string), string finalizeConsentUrl = default(string))
+        /// <param name="allowUndefinedActions">allowUndefinedActions.</param>
+        public ServiceProviderPatchDTO(string id = default(string), string name = default(string), string iconUrl = default(string), string publicKey = default(string), string initiateConsentRequestUrl = default(string), string finalizeConsentRequestUrl = default(string), string initiateConsentUrl = default(string), string finalizeConsentUrl = default(string), bool allowUndefinedActions = default(bool))
         {
             this.Id = id;
             this.Name = name;
@@ -52,6 +53,7 @@ namespace SmartAccess.Model
             this.FinalizeConsentRequestUrl = finalizeConsentRequestUrl;
             this.InitiateConsentUrl = initiateConsentUrl;
             this.FinalizeConsentUrl = finalizeConsentUrl;
+            this.AllowUndefinedActions = allowUndefinedActions;
         }
 
         /// <summary>
@@ -103,6 +105,12 @@ namespace SmartAccess.Model
         public string FinalizeConsentUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets AllowUndefinedActions
+        /// </summary>
+        [DataMember(Name = "allowUndefinedActions", EmitDefaultValue = true)]
+        public bool AllowUndefinedActions { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -118,6 +126,7 @@ namespace SmartAccess.Model
             sb.Append("  FinalizeConsentRequestUrl: ").Append(FinalizeConsentRequestUrl).Append("\n");
             sb.Append("  InitiateConsentUrl: ").Append(InitiateConsentUrl).Append("\n");
             sb.Append("  FinalizeConsentUrl: ").Append(FinalizeConsentUrl).Append("\n");
+            sb.Append("  AllowUndefinedActions: ").Append(AllowUndefinedActions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -191,6 +200,10 @@ namespace SmartAccess.Model
                     this.FinalizeConsentUrl == input.FinalizeConsentUrl ||
                     (this.FinalizeConsentUrl != null &&
                     this.FinalizeConsentUrl.Equals(input.FinalizeConsentUrl))
+                ) && 
+                (
+                    this.AllowUndefinedActions == input.AllowUndefinedActions ||
+                    this.AllowUndefinedActions.Equals(input.AllowUndefinedActions)
                 );
         }
 
@@ -219,6 +232,7 @@ namespace SmartAccess.Model
                     hashCode = hashCode * 59 + this.InitiateConsentUrl.GetHashCode();
                 if (this.FinalizeConsentUrl != null)
                     hashCode = hashCode * 59 + this.FinalizeConsentUrl.GetHashCode();
+                hashCode = hashCode * 59 + this.AllowUndefinedActions.GetHashCode();
                 return hashCode;
             }
         }

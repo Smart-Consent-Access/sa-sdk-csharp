@@ -131,6 +131,27 @@ namespace SmartAccess.Api
         /// <param name="direction">Either for_me (consenter) or by_me (requester)</param>
         /// <returns>ApiResponse of List&lt;ConsentRequestSummaryDTO&gt;</returns>
         ApiResponse<List<ConsentRequestSummaryDTO>> GetConsentRequestsWithHttpInfo(string direction);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentRequestsDTO">The search parameters</param>
+        /// <returns>PaginationResultDTOConsentRequestSearchResultDTO</returns>
+        PaginationResultDTOConsentRequestSearchResultDTO SearchConsentRequests(SearchConsentRequestsDTO searchConsentRequestsDTO);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentRequestsDTO">The search parameters</param>
+        /// <returns>ApiResponse of PaginationResultDTOConsentRequestSearchResultDTO</returns>
+        ApiResponse<PaginationResultDTOConsentRequestSearchResultDTO> SearchConsentRequestsWithHttpInfo(SearchConsentRequestsDTO searchConsentRequestsDTO);
         #endregion Synchronous Operations
     }
 
@@ -255,6 +276,29 @@ namespace SmartAccess.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (List&lt;ConsentRequestSummaryDTO&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<ConsentRequestSummaryDTO>>> GetConsentRequestsWithHttpInfoAsync(string direction, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentRequestsDTO">The search parameters</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of PaginationResultDTOConsentRequestSearchResultDTO</returns>
+        System.Threading.Tasks.Task<PaginationResultDTOConsentRequestSearchResultDTO> SearchConsentRequestsAsync(SearchConsentRequestsDTO searchConsentRequestsDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentRequestsDTO">The search parameters</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (PaginationResultDTOConsentRequestSearchResultDTO)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaginationResultDTOConsentRequestSearchResultDTO>> SearchConsentRequestsWithHttpInfoAsync(SearchConsentRequestsDTO searchConsentRequestsDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -976,6 +1020,133 @@ namespace SmartAccess.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetConsentRequests", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentRequestsDTO">The search parameters</param>
+        /// <returns>PaginationResultDTOConsentRequestSearchResultDTO</returns>
+        public PaginationResultDTOConsentRequestSearchResultDTO SearchConsentRequests(SearchConsentRequestsDTO searchConsentRequestsDTO)
+        {
+            SmartAccess.Client.ApiResponse<PaginationResultDTOConsentRequestSearchResultDTO> localVarResponse = SearchConsentRequestsWithHttpInfo(searchConsentRequestsDTO);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentRequestsDTO">The search parameters</param>
+        /// <returns>ApiResponse of PaginationResultDTOConsentRequestSearchResultDTO</returns>
+        public SmartAccess.Client.ApiResponse<PaginationResultDTOConsentRequestSearchResultDTO> SearchConsentRequestsWithHttpInfo(SearchConsentRequestsDTO searchConsentRequestsDTO)
+        {
+            // verify the required parameter 'searchConsentRequestsDTO' is set
+            if (searchConsentRequestsDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'searchConsentRequestsDTO' when calling ConsentRequestsApi->SearchConsentRequests");
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = searchConsentRequestsDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<PaginationResultDTOConsentRequestSearchResultDTO>("/consent_requests/search", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SearchConsentRequests", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentRequestsDTO">The search parameters</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of PaginationResultDTOConsentRequestSearchResultDTO</returns>
+        public async System.Threading.Tasks.Task<PaginationResultDTOConsentRequestSearchResultDTO> SearchConsentRequestsAsync(SearchConsentRequestsDTO searchConsentRequestsDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            SmartAccess.Client.ApiResponse<PaginationResultDTOConsentRequestSearchResultDTO> localVarResponse = await SearchConsentRequestsWithHttpInfoAsync(searchConsentRequestsDTO, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Search for consent requests given some search parameters. See SearchConsentRequestsDTO for details on parameters. Will return a list of matching consent requests
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchConsentRequestsDTO">The search parameters</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (PaginationResultDTOConsentRequestSearchResultDTO)</returns>
+        public async System.Threading.Tasks.Task<SmartAccess.Client.ApiResponse<PaginationResultDTOConsentRequestSearchResultDTO>> SearchConsentRequestsWithHttpInfoAsync(SearchConsentRequestsDTO searchConsentRequestsDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'searchConsentRequestsDTO' is set
+            if (searchConsentRequestsDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'searchConsentRequestsDTO' when calling ConsentRequestsApi->SearchConsentRequests");
+
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = searchConsentRequestsDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<PaginationResultDTOConsentRequestSearchResultDTO>("/consent_requests/search", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SearchConsentRequests", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

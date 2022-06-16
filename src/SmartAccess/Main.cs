@@ -78,9 +78,9 @@ namespace SmartAccess
             return new ConsentsApi(_ApiConfig);
         }
 
-        public BackofficeInternalAdminApi BackofficeInternalAdmin()
+        public ActionTemplatesApi ActionTemplates()
         {
-            return new BackofficeInternalAdminApi(_ApiConfig); // TODO: Not for public use
+            return new ActionTemplatesApi(_ApiConfig);
         }
 
         private static string CreateToken(Dictionary<string, object> payload, string privateRsaKey)

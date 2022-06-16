@@ -30,6 +30,27 @@ namespace SmartAccess.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Soft deletes (set to INACTIVE) a service provider
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <returns></returns>
+        void DeleteServiceProvider(string serviceProviderId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Soft deletes (set to INACTIVE) a service provider
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteServiceProviderWithHttpInfo(string serviceProviderId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Fetch information about the given service provider
         /// </remarks>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
@@ -47,6 +68,50 @@ namespace SmartAccess.Api
         /// <param name="id">The service provider id in UUID format</param>
         /// <returns>ApiResponse of ServiceProviderDTO</returns>
         ApiResponse<ServiceProviderDTO> GetServiceProviderWithHttpInfo(string id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Updates a service provider with new data. Only updates explicitly set new values, rest is left as is
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="serviceProviderPatchDTO"></param>
+        /// <returns>ServiceProviderDTO</returns>
+        ServiceProviderDTO PatchServiceProviders(string serviceProviderId, ServiceProviderPatchDTO serviceProviderPatchDTO);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Updates a service provider with new data. Only updates explicitly set new values, rest is left as is
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="serviceProviderPatchDTO"></param>
+        /// <returns>ApiResponse of ServiceProviderDTO</returns>
+        ApiResponse<ServiceProviderDTO> PatchServiceProvidersWithHttpInfo(string serviceProviderId, ServiceProviderPatchDTO serviceProviderPatchDTO);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a new service provider in SA
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderDTO"></param>
+        /// <returns>ServiceProviderDTO</returns>
+        ServiceProviderDTO PostServiceProviders(ServiceProviderDTO serviceProviderDTO);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a new service provider in SA
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderDTO"></param>
+        /// <returns>ApiResponse of ServiceProviderDTO</returns>
+        ApiResponse<ServiceProviderDTO> PostServiceProvidersWithHttpInfo(ServiceProviderDTO serviceProviderDTO);
         #endregion Synchronous Operations
     }
 
@@ -56,6 +121,29 @@ namespace SmartAccess.Api
     public interface IServiceProvidersApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Soft deletes (set to INACTIVE) a service provider
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteServiceProviderAsync(string serviceProviderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Soft deletes (set to INACTIVE) a service provider
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteServiceProviderWithHttpInfoAsync(string serviceProviderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -79,6 +167,54 @@ namespace SmartAccess.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ServiceProviderDTO)</returns>
         System.Threading.Tasks.Task<ApiResponse<ServiceProviderDTO>> GetServiceProviderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Updates a service provider with new data. Only updates explicitly set new values, rest is left as is
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="serviceProviderPatchDTO"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ServiceProviderDTO</returns>
+        System.Threading.Tasks.Task<ServiceProviderDTO> PatchServiceProvidersAsync(string serviceProviderId, ServiceProviderPatchDTO serviceProviderPatchDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Updates a service provider with new data. Only updates explicitly set new values, rest is left as is
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="serviceProviderPatchDTO"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ServiceProviderDTO)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceProviderDTO>> PatchServiceProvidersWithHttpInfoAsync(string serviceProviderId, ServiceProviderPatchDTO serviceProviderPatchDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a new service provider in SA
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderDTO"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ServiceProviderDTO</returns>
+        System.Threading.Tasks.Task<ServiceProviderDTO> PostServiceProvidersAsync(ServiceProviderDTO serviceProviderDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a new service provider in SA
+        /// </remarks>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderDTO"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ServiceProviderDTO)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceProviderDTO>> PostServiceProvidersWithHttpInfoAsync(ServiceProviderDTO serviceProviderDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -200,6 +336,129 @@ namespace SmartAccess.Api
         }
 
         /// <summary>
+        ///  Soft deletes (set to INACTIVE) a service provider
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <returns></returns>
+        public void DeleteServiceProvider(string serviceProviderId)
+        {
+            DeleteServiceProviderWithHttpInfo(serviceProviderId);
+        }
+
+        /// <summary>
+        ///  Soft deletes (set to INACTIVE) a service provider
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public SmartAccess.Client.ApiResponse<Object> DeleteServiceProviderWithHttpInfo(string serviceProviderId)
+        {
+            // verify the required parameter 'serviceProviderId' is set
+            if (serviceProviderId == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'serviceProviderId' when calling ServiceProvidersApi->DeleteServiceProvider");
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("serviceProviderId", SmartAccess.Client.ClientUtils.ParameterToString(serviceProviderId)); // path parameter
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/serviceproviders/{serviceProviderId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteServiceProvider", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Soft deletes (set to INACTIVE) a service provider
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteServiceProviderAsync(string serviceProviderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            await DeleteServiceProviderWithHttpInfoAsync(serviceProviderId, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        ///  Soft deletes (set to INACTIVE) a service provider
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<SmartAccess.Client.ApiResponse<Object>> DeleteServiceProviderWithHttpInfoAsync(string serviceProviderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'serviceProviderId' is set
+            if (serviceProviderId == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'serviceProviderId' when calling ServiceProvidersApi->DeleteServiceProvider");
+
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("serviceProviderId", SmartAccess.Client.ClientUtils.ParameterToString(serviceProviderId)); // path parameter
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/serviceproviders/{serviceProviderId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteServiceProvider", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         ///  Fetch information about the given service provider
         /// </summary>
         /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
@@ -318,6 +577,274 @@ namespace SmartAccess.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetServiceProvider", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Updates a service provider with new data. Only updates explicitly set new values, rest is left as is
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="serviceProviderPatchDTO"></param>
+        /// <returns>ServiceProviderDTO</returns>
+        public ServiceProviderDTO PatchServiceProviders(string serviceProviderId, ServiceProviderPatchDTO serviceProviderPatchDTO)
+        {
+            SmartAccess.Client.ApiResponse<ServiceProviderDTO> localVarResponse = PatchServiceProvidersWithHttpInfo(serviceProviderId, serviceProviderPatchDTO);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Updates a service provider with new data. Only updates explicitly set new values, rest is left as is
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="serviceProviderPatchDTO"></param>
+        /// <returns>ApiResponse of ServiceProviderDTO</returns>
+        public SmartAccess.Client.ApiResponse<ServiceProviderDTO> PatchServiceProvidersWithHttpInfo(string serviceProviderId, ServiceProviderPatchDTO serviceProviderPatchDTO)
+        {
+            // verify the required parameter 'serviceProviderId' is set
+            if (serviceProviderId == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'serviceProviderId' when calling ServiceProvidersApi->PatchServiceProviders");
+
+            // verify the required parameter 'serviceProviderPatchDTO' is set
+            if (serviceProviderPatchDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'serviceProviderPatchDTO' when calling ServiceProvidersApi->PatchServiceProviders");
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("serviceProviderId", SmartAccess.Client.ClientUtils.ParameterToString(serviceProviderId)); // path parameter
+            localVarRequestOptions.Data = serviceProviderPatchDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<ServiceProviderDTO>("/serviceproviders/{serviceProviderId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PatchServiceProviders", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Updates a service provider with new data. Only updates explicitly set new values, rest is left as is
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="serviceProviderPatchDTO"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ServiceProviderDTO</returns>
+        public async System.Threading.Tasks.Task<ServiceProviderDTO> PatchServiceProvidersAsync(string serviceProviderId, ServiceProviderPatchDTO serviceProviderPatchDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            SmartAccess.Client.ApiResponse<ServiceProviderDTO> localVarResponse = await PatchServiceProvidersWithHttpInfoAsync(serviceProviderId, serviceProviderPatchDTO, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Updates a service provider with new data. Only updates explicitly set new values, rest is left as is
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderId">The service provider id in UUID format</param>
+        /// <param name="serviceProviderPatchDTO"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ServiceProviderDTO)</returns>
+        public async System.Threading.Tasks.Task<SmartAccess.Client.ApiResponse<ServiceProviderDTO>> PatchServiceProvidersWithHttpInfoAsync(string serviceProviderId, ServiceProviderPatchDTO serviceProviderPatchDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'serviceProviderId' is set
+            if (serviceProviderId == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'serviceProviderId' when calling ServiceProvidersApi->PatchServiceProviders");
+
+            // verify the required parameter 'serviceProviderPatchDTO' is set
+            if (serviceProviderPatchDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'serviceProviderPatchDTO' when calling ServiceProvidersApi->PatchServiceProviders");
+
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("serviceProviderId", SmartAccess.Client.ClientUtils.ParameterToString(serviceProviderId)); // path parameter
+            localVarRequestOptions.Data = serviceProviderPatchDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<ServiceProviderDTO>("/serviceproviders/{serviceProviderId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PatchServiceProviders", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Creates a new service provider in SA
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderDTO"></param>
+        /// <returns>ServiceProviderDTO</returns>
+        public ServiceProviderDTO PostServiceProviders(ServiceProviderDTO serviceProviderDTO)
+        {
+            SmartAccess.Client.ApiResponse<ServiceProviderDTO> localVarResponse = PostServiceProvidersWithHttpInfo(serviceProviderDTO);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates a new service provider in SA
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderDTO"></param>
+        /// <returns>ApiResponse of ServiceProviderDTO</returns>
+        public SmartAccess.Client.ApiResponse<ServiceProviderDTO> PostServiceProvidersWithHttpInfo(ServiceProviderDTO serviceProviderDTO)
+        {
+            // verify the required parameter 'serviceProviderDTO' is set
+            if (serviceProviderDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'serviceProviderDTO' when calling ServiceProvidersApi->PostServiceProviders");
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = serviceProviderDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ServiceProviderDTO>("/serviceproviders", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostServiceProviders", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Creates a new service provider in SA
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderDTO"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ServiceProviderDTO</returns>
+        public async System.Threading.Tasks.Task<ServiceProviderDTO> PostServiceProvidersAsync(ServiceProviderDTO serviceProviderDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            SmartAccess.Client.ApiResponse<ServiceProviderDTO> localVarResponse = await PostServiceProvidersWithHttpInfoAsync(serviceProviderDTO, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates a new service provider in SA
+        /// </summary>
+        /// <exception cref="SmartAccess.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="serviceProviderDTO"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ServiceProviderDTO)</returns>
+        public async System.Threading.Tasks.Task<SmartAccess.Client.ApiResponse<ServiceProviderDTO>> PostServiceProvidersWithHttpInfoAsync(ServiceProviderDTO serviceProviderDTO, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'serviceProviderDTO' is set
+            if (serviceProviderDTO == null)
+                throw new SmartAccess.Client.ApiException(400, "Missing required parameter 'serviceProviderDTO' when calling ServiceProvidersApi->PostServiceProviders");
+
+
+            SmartAccess.Client.RequestOptions localVarRequestOptions = new SmartAccess.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = SmartAccess.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = SmartAccess.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = serviceProviderDTO;
+
+            // authentication (jwt) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ServiceProviderDTO>("/serviceproviders", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostServiceProviders", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

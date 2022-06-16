@@ -2,19 +2,19 @@
 
 ##  Install
 
-`dotnet add package SmartAccess.SDK --version 1.0.4`
+`dotnet add package SmartAccess.SDK --version 1.0.5`
 
 `using SmartAccess;`
 
 ## Usage
 
-Set the following environment variables: 
+Set the following environment variables:
 
 ```
 SA_SERVICE_PROVIDER_PRIVATE_KEY_PATH="path_to_private_key.pem"
 SA_PUBLIC_KEY_PATH="path_to_public_key.pem"
-SA_BASE_URL_API="https://ao.sandbox.smartconsent.se/api/v1"
-SA_BASE_URL_WEB="https://ao.sandbox.smartconsent.se"
+SA_BASE_URL_API="https://sa.sandbox.smartconsent.se/api/v1"
+SA_BASE_URL_WEB="https://sa.sandbox.smartconsent.se"
 SA_SERVICE_PROVIDER_ID="your_service_provider_id"
 ```
 

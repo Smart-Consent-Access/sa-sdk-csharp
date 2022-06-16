@@ -16,6 +16,10 @@ Name | Type | Description | Notes
 **ReqPrincipalName** | **string** |  | 
 **ConsServiceProviderId** | **string** |  | 
 **Consents** | [**List&lt;ConsentSummaryDTO&gt;**](ConsentSummaryDTO.md) |  | [optional] 
+**NumApproved** | **double** |  | 
+**NumRejected** | **double** |  | 
+**ResponseTotalStatus** | **string** |  | 
+**NumAffectedUsers** | **double** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,6 +6,7 @@ An approved consent, given by the person referenced by Legal Entity. Points to t
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
+**Type** | **ConsentType** |  | 
 **LegalEntity** | [**LegalEntityDTO**](LegalEntityDTO.md) |  | [optional] 
 **Policy** | [**List&lt;PolicyDTO&gt;**](PolicyDTO.md) |  | [optional] 
 

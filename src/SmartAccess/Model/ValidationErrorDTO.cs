@@ -41,8 +41,8 @@ namespace SmartAccess.Model
         /// </summary>
         /// <param name="statusCode">statusCode (required).</param>
         /// <param name="message">message (required).</param>
-        /// <param name="details">details (required).</param>
-        public ValidationErrorDTO(double statusCode = default(double), string message = default(string), Dictionary<string, Object> details = default(Dictionary<string, Object>))
+        /// <param name="details">details.</param>
+        public ValidationErrorDTO(double statusCode = default(double), string message = default(string), Object details = default(Object))
         {
             this.StatusCode = statusCode;
             // to ensure "message" is required (not null)
@@ -50,10 +50,6 @@ namespace SmartAccess.Model
                 throw new ArgumentNullException("message is a required property for ValidationErrorDTO and cannot be null");
             }
             this.Message = message;
-            // to ensure "details" is required (not null)
-            if (details == null) {
-                throw new ArgumentNullException("details is a required property for ValidationErrorDTO and cannot be null");
-            }
             this.Details = details;
         }
 
@@ -72,8 +68,8 @@ namespace SmartAccess.Model
         /// <summary>
         /// Gets or Sets Details
         /// </summary>
-        [DataMember(Name = "details", IsRequired = true, EmitDefaultValue = false)]
-        public Dictionary<string, Object> Details { get; set; }
+        [DataMember(Name = "details", EmitDefaultValue = true)]
+        public Object Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -131,9 +127,8 @@ namespace SmartAccess.Model
                 ) && 
                 (
                     this.Details == input.Details ||
-                    this.Details != null &&
-                    input.Details != null &&
-                    this.Details.SequenceEqual(input.Details)
+                    (this.Details != null &&
+                    this.Details.Equals(input.Details))
                 );
         }
 
