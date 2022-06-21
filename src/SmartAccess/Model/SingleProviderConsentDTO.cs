@@ -39,7 +39,6 @@ namespace SmartAccess.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SingleProviderConsentDTO" /> class.
         /// </summary>
-        /// <param name="serviceProviderId">serviceProviderId (required).</param>
         /// <param name="reqPrincipalName">reqPrincipalName (required).</param>
         /// <param name="reqPrincipalId">reqPrincipalId (required).</param>
         /// <param name="consPrincipalName">consPrincipalName (required).</param>
@@ -49,13 +48,8 @@ namespace SmartAccess.Model
         /// <param name="conditions">conditions (required).</param>
         /// <param name="termsAndConditions">termsAndConditions.</param>
         /// <param name="consentedAt">Set this time when recording a historical consent. Format is Unix time (seconds since epoch).</param>
-        public SingleProviderConsentDTO(string serviceProviderId = default(string), string reqPrincipalName = default(string), string reqPrincipalId = default(string), string consPrincipalName = default(string), string consPrincipalId = default(string), List<string> actions = default(List<string>), List<string> resources = default(List<string>), List<string> conditions = default(List<string>), string termsAndConditions = default(string), double consentedAt = default(double))
+        public SingleProviderConsentDTO(string reqPrincipalName = default(string), string reqPrincipalId = default(string), string consPrincipalName = default(string), string consPrincipalId = default(string), List<string> actions = default(List<string>), List<string> resources = default(List<string>), List<string> conditions = default(List<string>), string termsAndConditions = default(string), double consentedAt = default(double))
         {
-            // to ensure "serviceProviderId" is required (not null)
-            if (serviceProviderId == null) {
-                throw new ArgumentNullException("serviceProviderId is a required property for SingleProviderConsentDTO and cannot be null");
-            }
-            this.ServiceProviderId = serviceProviderId;
             // to ensure "reqPrincipalName" is required (not null)
             if (reqPrincipalName == null) {
                 throw new ArgumentNullException("reqPrincipalName is a required property for SingleProviderConsentDTO and cannot be null");
@@ -94,12 +88,6 @@ namespace SmartAccess.Model
             this.TermsAndConditions = termsAndConditions;
             this.ConsentedAt = consentedAt;
         }
-
-        /// <summary>
-        /// Gets or Sets ServiceProviderId
-        /// </summary>
-        [DataMember(Name = "serviceProviderId", IsRequired = true, EmitDefaultValue = false)]
-        public string ServiceProviderId { get; set; }
 
         /// <summary>
         /// Gets or Sets ReqPrincipalName
@@ -164,7 +152,6 @@ namespace SmartAccess.Model
         {
             var sb = new StringBuilder();
             sb.Append("class SingleProviderConsentDTO {\n");
-            sb.Append("  ServiceProviderId: ").Append(ServiceProviderId).Append("\n");
             sb.Append("  ReqPrincipalName: ").Append(ReqPrincipalName).Append("\n");
             sb.Append("  ReqPrincipalId: ").Append(ReqPrincipalId).Append("\n");
             sb.Append("  ConsPrincipalName: ").Append(ConsPrincipalName).Append("\n");
@@ -208,11 +195,6 @@ namespace SmartAccess.Model
                 return false;
 
             return 
-                (
-                    this.ServiceProviderId == input.ServiceProviderId ||
-                    (this.ServiceProviderId != null &&
-                    this.ServiceProviderId.Equals(input.ServiceProviderId))
-                ) && 
                 (
                     this.ReqPrincipalName == input.ReqPrincipalName ||
                     (this.ReqPrincipalName != null &&
@@ -271,8 +253,6 @@ namespace SmartAccess.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ServiceProviderId != null)
-                    hashCode = hashCode * 59 + this.ServiceProviderId.GetHashCode();
                 if (this.ReqPrincipalName != null)
                     hashCode = hashCode * 59 + this.ReqPrincipalName.GetHashCode();
                 if (this.ReqPrincipalId != null)

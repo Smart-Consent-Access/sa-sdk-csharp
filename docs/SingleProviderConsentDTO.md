@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ServiceProviderId** | **string** |  | 
 **ReqPrincipalName** | **string** |  | 
 **ReqPrincipalId** | **string** |  | 
 **ConsPrincipalName** | **string** |  | 

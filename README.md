@@ -2,7 +2,7 @@
 
 ##  Install
 
-`dotnet add package SmartAccess.SDK --version 1.0.6`
+`dotnet add package SmartAccess.SDK --version 1.0.7`
 
 `using SmartAccess;`
 
